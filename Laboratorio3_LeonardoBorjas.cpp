@@ -1,13 +1,13 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#include <string>
 char** crearmatriz(int);
 void imprimirmatriz(char**, int, int, int);
 char** llenarmatriz1(char**, int);
 char** llenarmatriz2(char**, int);
-string random();
+
 using namespace std;
+
 int main(){
 	int size=8;
 	int salir=0;
@@ -35,54 +35,72 @@ int main(){
 			cout<<"Turno del Jugador 1:" <<endl
 				<<"Ingrese la coordenada x:";
 			cin>>coordx;
-			cout<<"Ingresela coordenada y:";
+			cout<<endl <<"Ingresela coordenada y:";
 			cin>>coordy;
 			cout<<endl;
 			if(matriz2[coordx][coordy]=='*'){
-				cout<<"Le haz dado a un barco";
+				cout<<"Le haz dado a un barco"<<endl;
 				matriz2[coordx][coordy];
+					
+				string palabra="";
+				int prueba= rand() % 7 + 1;
+				if(prueba==1)
+					cout<<"El oponente bebe un Cheap_Tequila";
+				if(prueba==2)
+					cout<<"El oponente bebe un Jell-O";
+				if(prueba==3)
+					cout<<"El oponente bebe un Kamikaze";
+				if(prueba==4)
+					cout<<"El oponente bebe un MindEraser";
+				if(prueba==5)
+					cout<<"El oponente bebe un Bombs";
+				if(prueba==6)
+					cout<<"El oponente bebe un Fireballs";
+				if(prueba==7)
+					cout<<"El oponente bebe un Whiskey";
+				cout<<endl;
 				shot2+=1;
 				
 				if(coordx==1 && coordy==1)
-					barco11-=1;
+					barco21-=1;
 				if(coordx==1 && coordy==2)
-					barco11-=1;
+					barco21-=1;
 				if(coordx==1 && coordy==3)
-					barco11-=1;		
+					barco21-=1;		
 
 				if(coordx==2 && coordy==7)
-					barco12-=1;
+					barco22-=1;
 				if(coordx==3 && coordy==7)
-					barco12-=1;
+					barco22-=1;
 				if(coordx==4 && coordy==7)
-					barco12-=1;
+					barco22-=1;
 
 				if(coordx==3 && coordy==4)
-					barco13-=1;
+					barco23-=1;
 				if(coordx==4 && coordy==4)
-					barco13-=1;
+					barco23-=1;
 				if(coordx==5 && coordy==4)
-					barco13-=1;
+					barco23-=1;
 
 				if(coordx==7 && coordy==1)
-					barco14-=1;
+					barco24-=1;
 				if(coordx==7 && coordy==2)
-					barco14-=1;
+					barco24-=1;
 				if(coordx==7 && coordy==3)
-					barco14-=1;
+					barco24-=1;
 
 				
-				if(barco11==0)
+				if(barco21==0)
 					cout<<"Haz hundido el barco 1 del oponente!"<<endl;
-				if(barco12==0)
+				if(barco22==0)
 					cout<<"Haz hundido el barco 2 del oponente!"<<endl;
-				if(barco13==0)
+				if(barco23==0)
 					cout<<"Haz hundido el barco 3 del oponente!"<<endl;
-				if(barco14==0)
+				if(barco24==0)
 					cout<<"Haz hundido el barco 4 del oponente!"<<endl;
 
-			}else{
-				cout<<"Haz fallado el tiro";
+			}else{	
+			cout<<"Haz fallado el tiro" <<endl;
 			}
 			salir=1;
 		}
@@ -101,42 +119,6 @@ int main(){
 
 
 	return 0;
-}
-
-string random(){
-	string palabra="";
-	int prueba= rand() % 7 + 1;
-	switch(prueba){
-		case 1:{
-				palabra="Cheap_Tequila";
-			   }
-			   break;
-		case 2:{
-				palabra="Jell-O";
-			   }
-			   break;
-		case 3:{
-				palabra="Kamikaze";
-			   }
-			   break;
-		case 4:{
-				palabra="MindEraser";
-			   }
-			   break;
-		case 5:{
-				palabra="Bombs";
-			   }
-			   break;
-		case 6:{
-				palabra="Fireballs";
-			   }
-			   break;
-		case 7:{
-				palabra="Whiskey";
-			   }
-			   break;
-	}
-	return palabra;
 }
 
 char** llenarmatriz1(char** matriz1, int size){
