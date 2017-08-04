@@ -241,7 +241,7 @@ int main(){
 	if(shot2==5){
 		cout<<"Gano el jugador 1";
 	}
-
+	cout<<endl;
 	return 0;
 }
 
