@@ -26,16 +26,17 @@ int main(){
 	char** matriz1=crearmatriz(size);
 	char** matriz2=crearmatriz(size);
 	srand(time(NULL));
-		
+	matriz1=llenarmatriz1(matriz1, size);
+	matriz2=llenarmatriz2(matriz2, size);	
 	do{
 		if(salir==0){
-			matriz1=llenarmatriz1(matriz1, size);	
+			
 			imprimirmatriz(matriz1, size,0,0);
 			cout<<endl;
 			cout<<"Turno del Jugador 1:" <<endl
 				<<"Ingrese la coordenada x:";
 			cin>>coordx;
-			cout<<endl <<"Ingresela coordenada y:";
+			cout<<endl <<"Ingrese la coordenada y:";
 			cin>>coordy;
 			cout<<endl;
 			if(matriz2[coordx][coordy]=='*'){
@@ -105,7 +106,7 @@ int main(){
 		}
 		
 		if(salir==1)
-			matriz2=llenarmatriz2(matriz2, size);	
+			
 			imprimirmatriz(matriz2, size,0,0);
 			cout<<endl;
 			cout<<"Turno del Jugador 2:" <<endl
