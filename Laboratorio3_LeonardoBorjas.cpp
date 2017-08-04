@@ -23,6 +23,7 @@ int main(){
 	int barco22=3;
 	int barco23=3;
 	int barco24=3;
+	int validar=0;
 	char** matriz1=crearmatriz(size);
 	char** matriz2=crearmatriz(size);
 	srand(time(NULL));
@@ -30,15 +31,33 @@ int main(){
 	matriz2=llenarmatriz2(matriz2, size);	
 	do{
 		if(salir==0){
-			
+			for(int i=0;i<32;i++){
+				cout<<endl;
+			}
 			imprimirmatriz(matriz1, size,0,0);
 			cout<<endl;
-			cout<<"Turno del Jugador 1:" <<endl
-				<<"Ingrese la coordenada x:";
-			cin>>coordx;
-			cout<<endl <<"Ingrese la coordenada y:";
-			cin>>coordy;
-			cout<<endl;
+
+			do{
+				validar=0;
+				cout<<"Turno del Jugador 1:" <<endl
+					<<"Ingrese la coordenada x:";
+				cin>>coordx;
+				cout<<endl <<"Ingrese la coordenada y:";
+				cin>>coordy;
+				cout<<endl;
+
+				if(coordx<0 || coordx>7 || coordy<0 || coordy>7){
+					cout<<"Coordenada incorrecta" <<endl;
+					validar=1;
+				}
+
+				if(matriz2[coordx][coordy]=='X'){
+					cout<<"Ya le disparo a esa coordenada";
+					validar=1;
+				}
+			}while(validar!=0);
+
+
 			if(matriz2[coordx][coordy]=='*'){
 				cout<<"Le haz dado a un barco"<<endl;
 				matriz2[coordx][coordy]='X';
@@ -103,18 +122,44 @@ int main(){
 			cout<<"Haz fallado el tiro" <<endl;
 			}
 			salir=1;
+
+			if(shot2==5){
+				salir=2;
+			}
+			cout<<"Presione Enter para cambiar de turno";
+			cin.ignore();
+			cin.ignore();
 		}
 		
-		if(salir==1)
-			
+		if(salir==1){
+			for(int i=0;i<32;i++){
+				cout<<endl;
+			}
 			imprimirmatriz(matriz2, size,0,0);
 			cout<<endl;
-			cout<<"Turno del Jugador 2:" <<endl
-				<<"Ingrese la coordenada x:";
-			cin>>coordx;
-			cout<<endl <<"Ingrese la coordenada y:";
-			cin>>coordy;
-			cout<<endl;
+
+			do{
+				validar=0;
+				cout<<"Turno del Jugador 2:" <<endl
+					<<"Ingrese la coordenada x:";
+				cin>>coordx;
+				cout<<endl <<"Ingrese la coordenada y:";
+				cin>>coordy;
+				cout<<endl;
+				
+				if(coordx<0 || coordx>7 || coordy<0 || coordy>7){
+					cout<<"Coordenada incorrecta" <<endl;
+					validar=1;
+				}
+
+				if(matriz1[coordx][coordy]=='X'){
+					cout<<"Ya le disparo a esa coordenada";
+					validar=1;
+				}
+
+
+			}while(validar!=0);
+
 			if(matriz1[coordx][coordy]=='*'){
 				cout<<"Le haz dado a un barco"<<endl;
 				matriz1[coordx][coordy]='X';
@@ -179,8 +224,23 @@ int main(){
 			}
 
 			salir=0;
-	}while(shot1!=5 || shot2!=5);
 
+			if(shot1==5){
+				salir=2;
+			}
+			cout<<"Presione Enter para cambiar de turno";
+			cin.ignore();
+			cin.ignore();
+		}
+	}while(salir!=2);
+	
+	if(shot1==5){
+		cout<<"Gano el jugador 2";
+	}
+
+	if(shot2==5){
+		cout<<"Gano el jugador 1";
+	}
 
 	return 0;
 }
