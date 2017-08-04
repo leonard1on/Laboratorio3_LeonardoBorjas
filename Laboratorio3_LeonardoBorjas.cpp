@@ -29,7 +29,7 @@ int main(){
 		
 	do{
 		if(salir==0){
-			matriz1=llenarmatriz1(matriz1,size);	
+			matriz1=llenarmatriz1(matriz1, size);	
 			imprimirmatriz(matriz1, size,0,0);
 			cout<<endl;
 			cout<<"Turno del Jugador 1:" <<endl
@@ -40,9 +40,8 @@ int main(){
 			cout<<endl;
 			if(matriz2[coordx][coordy]=='*'){
 				cout<<"Le haz dado a un barco"<<endl;
-				matriz2[coordx][coordy];
+				matriz2[coordx][coordy]='X';
 					
-				string palabra="";
 				int prueba= rand() % 7 + 1;
 				if(prueba==1)
 					cout<<"El oponente bebe un Cheap_Tequila";
@@ -61,32 +60,32 @@ int main(){
 				cout<<endl;
 				shot2+=1;
 				
-				if(coordx==1 && coordy==1)
+				if(coordx==0 && coordy==1)
 					barco21-=1;
-				if(coordx==1 && coordy==2)
+				if(coordx==0 && coordy==2)
 					barco21-=1;
-				if(coordx==1 && coordy==3)
+				if(coordx==0 && coordy==3)
 					barco21-=1;		
 
-				if(coordx==2 && coordy==7)
+				if(coordx==3 && coordy==5)
+					barco22-=1;
+				if(coordx==3 && coordy==6)
 					barco22-=1;
 				if(coordx==3 && coordy==7)
 					barco22-=1;
-				if(coordx==4 && coordy==7)
-					barco22-=1;
 
-				if(coordx==3 && coordy==4)
-					barco23-=1;
 				if(coordx==4 && coordy==4)
 					barco23-=1;
 				if(coordx==5 && coordy==4)
 					barco23-=1;
+				if(coordx==6 && coordy==4)
+					barco23-=1;
 
+				if(coordx==5 && coordy==1)
+					barco24-=1;
+				if(coordx==6 && coordy==1)
+					barco24-=1;
 				if(coordx==7 && coordy==1)
-					barco24-=1;
-				if(coordx==7 && coordy==2)
-					barco24-=1;
-				if(coordx==7 && coordy==3)
 					barco24-=1;
 
 				
@@ -106,16 +105,80 @@ int main(){
 		}
 		
 		if(salir==1)
-			matriz2=llenarmatriz2(matriz2,size);	
+			matriz2=llenarmatriz2(matriz2, size);	
 			imprimirmatriz(matriz2, size,0,0);
 			cout<<endl;
+			cout<<"Turno del Jugador 2:" <<endl
+				<<"Ingrese la coordenada x:";
+			cin>>coordx;
+			cout<<endl <<"Ingrese la coordenada y:";
+			cin>>coordy;
+			cout<<endl;
+			if(matriz1[coordx][coordy]=='*'){
+				cout<<"Le haz dado a un barco"<<endl;
+				matriz1[coordx][coordy]='X';
+	
+				int prueba= rand() % 7 + 1;
+				if(prueba==1)
+					cout<<"El oponente bebe un Cheap_Tequila";
+				if(prueba==2)
+					cout<<"El oponente bebe un Jell-O";
+				if(prueba==3)
+					cout<<"El oponente bebe un Kamikaze";
+				if(prueba==4)
+					cout<<"El oponente bebe un MindEraser";
+				if(prueba==5)
+					cout<<"El oponente bebe un Bombs";
+				if(prueba==6)
+					cout<<"El oponente bebe un Fireballs";
+				if(prueba==7)
+					cout<<"El oponente bebe un Whiskey";
+				cout<<endl;
+				shot1+=1;
+				
+				if(coordx==1 && coordy==1)
+					barco11-=1;
+				if(coordx==1 && coordy==2)
+					barco11-=1;
+				if(coordx==1 && coordy==3)
+					barco11-=1;		
 
+				if(coordx==2 && coordy==7)
+					barco12-=1;
+				if(coordx==3 && coordy==7)
+					barco12-=1;
+				if(coordx==4 && coordy==7)
+					barco12-=1;
 
+				if(coordx==3 && coordy==4)
+					barco13-=1;
+				if(coordx==4 && coordy==4)
+					barco13-=1;
+				if(coordx==5 && coordy==4)
+					barco13-=1;
 
+				if(coordx==7 && coordy==1)
+					barco14-=1;
+				if(coordx==7 && coordy==2)
+					barco14-=1;
+				if(coordx==7 && coordy==3)
+					barco14-=1;
 
+				
+				if(barco11==0)
+					cout<<"Haz hundido el barco 1 del oponente!"<<endl;
+				if(barco12==0)
+					cout<<"Haz hundido el barco 2 del oponente!"<<endl;
+				if(barco13==0)
+					cout<<"Haz hundido el barco 3 del oponente!"<<endl;
+				if(barco14==0)
+					cout<<"Haz hundido el barco 4 del oponente!"<<endl;
+			}else{	
+			cout<<"Haz fallado el tiro" <<endl;
+			}
 
 			salir=0;
-	}while(true);
+	}while(shot1!=5 || shot2!=5);
 
 
 	return 0;
