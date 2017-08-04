@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 char** crearmatriz(int);
 void imprimirmatriz(char**, int, int, int);
 char** llenarmatriz1(char**, int);
@@ -6,14 +7,49 @@ char** llenarmatriz2(char**, int);
 using namespace std;
 int main(){
 	int size=8;
+	int salir=0;
+	int coordx=0;
+	int coordy=0;
+	int shot1=0;
+	int shot2=0;
 	char** matriz1=crearmatriz(size);
 	char** matriz2=crearmatriz(size);
+	
+	do{
+		if(salir==0){
+			matriz1=llenarmatriz1(matriz1,size);	
+			imprimirmatriz(matriz1, size,0,0);
+			cout<<endl;
+			cout<<"Turno del Jugador 1:" <<endl
+				<<"Ingrese la coordenada x:";
+			cin>>coordx;
+			cout<<"Ingresela coordenada y:";
+			cin>>coordy;
+			cout<<endl;
+			if(matriz2[coordx][coordy]=='*'){
+				cout<<"Le haz dado a un barco";
+				matriz2[coordx][coordy];
+				shot2+=1;
 
-	matriz1=llenarmatriz1(matriz1,size);	
-	imprimirmatriz(matriz1, size,0,0);
-	cout<<endl;
-	matriz2=llenarmatriz2(matriz2,size);	
-	imprimirmatriz(matriz2, size,0,0);
+			}else{
+				cout<<"Haz fallado el tiro";
+			}
+			salir=1;
+		}
+		
+		if(salir==1)
+			matriz2=llenarmatriz2(matriz2,size);	
+			imprimirmatriz(matriz2, size,0,0);
+			cout<<endl;
+
+
+
+
+
+			salir=0;
+	}while(true);
+
+
 	return 0;
 }
 
